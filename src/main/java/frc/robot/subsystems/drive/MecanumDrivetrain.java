@@ -2,6 +2,7 @@ package frc.robot.subsystems.drive;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.studica.frc.AHRS;
 import com.studica.frc.AHRS.NavXComType;
 
@@ -43,9 +44,11 @@ public class MecanumDrivetrain extends SubsystemBase {
         m_rearRight = new SparkMax(HardwareConstants.kRearRightMotorID, MotorType.kBrushed);
 
         SparkMaxConfig inverted = new SparkMaxConfig();
+        inverted.idleMode(IdleMode.kBrake);
         inverted.inverted(true);
         
         SparkMaxConfig nonInverted = new SparkMaxConfig();
+        nonInverted.idleMode(IdleMode.kBrake);
         nonInverted.inverted(false);
 
         m_frontLeft.configure(inverted, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
